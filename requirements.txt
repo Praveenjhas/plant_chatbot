@@ -1,28 +1,17 @@
-# Core dependencies
-python-dotenv==1.0.0
-numpy==1.24.0
-
-# LangChain ecosystem
-langchain==0.1.0
-langchain-community==0.0.1
-langchain-core==0.1.0
-langchain-openai==0.0.1
-
-# Embeddings and Vector Stores
-sentence-transformers==2.2.2
-faiss-cpu==1.7.4
-huggingface-hub==0.16.4
-torch==2.0.1
-
-# Audio and NLP processing
-gtts==2.3.2
+# Core App Dependencies
+streamlit==1.44.1
+gTTS==2.5.4
 langdetect==1.0.9
 
-# Streamlit & UI
-streamlit==1.28.0
-rich==13.4.2
+# LangChain Ecosystem
+langchain==0.3.23
+langchain-community==0.3.21
+langchain-core==0.3.54
 
-# Utility packages
-tqdm==4.65.0
-httpx==0.24.1
-python-multipart==0.0.6
+# Vector Store & Embeddings
+faiss-cpu==1.7.4
+sentence-transformers==4.1.0
+huggingface-hub==0.30.2
+
+# Utils
+torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
