@@ -24,13 +24,26 @@ def get_vectorstore():
     return db
 
 def load_llm_openrouter():
-    return ChatOpenAI(
-        model="mistralai/mistral-7b-instruct",
-        temperature=0.5,
-        max_tokens=512,
-        openai_api_base="https://openrouter.ai/api/v1",
-        openai_api_key=st.secrets["openrouter"]["api_key"]  # Secure API key access
-    )
+    try:
+        # Verify the key exists first
+        if "openrouter" not in st.secrets or not st.secrets["openrouter"].get("api_key"):
+            st.error("OpenRouter API key not configured. Please check your secrets.")
+            st.stop()
+
+        return ChatOpenAI(
+            model="mistralai/mistral-7b-instruct",
+            temperature=0.5,
+            max_tokens=512,
+            openai_api_base="https://openrouter.ai/api/v1",
+            openai_api_key=st.secrets["openrouter"]["api_key"],
+            headers={
+                "HTTP-Referer": "https://mysteramlitchatbot.streamlit.app/",  # Replace with your actual URL
+                "X-Title": "PlantBot Chatbot"
+            }
+        )
+    except Exception as e:
+        st.error(f"LLM initialization failed: {str(e)}")
+        st.stop()
 
 def detect_language(text):
     try:
