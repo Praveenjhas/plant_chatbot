@@ -12,7 +12,7 @@ from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import PromptTemplate
-from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
@@ -29,7 +29,7 @@ def load_llm_openrouter():
         temperature=0.5,
         max_tokens=512,
         openai_api_base="https://openrouter.ai/api/v1",
-        openai_api_key="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"
+        openai_api_key=st.secrets["openrouter"]["api_key"]  # Secure API key access
     )
 
 def detect_language(text):
@@ -118,7 +118,7 @@ def main():
                 retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
                 return_source_documents=True,
                 chain_type_kwargs={"prompt": PromptTemplate(
-                    template="""
+                    template=""" 
 Answer the user's question using the context provided below and the knowledge that you have for that plant use that also.
 If the context contains relevant information, use it directly. If the context is insufficient, include your own knowledge but make sure it's relevant. Cite the sources you have taken to answer.
 
@@ -131,7 +131,7 @@ Question:
 Answer:
 """,
                     input_variables=["context", "question"]
-                )}
+                )} 
             )
 
             response = qa_chain.invoke({"query": prompt})

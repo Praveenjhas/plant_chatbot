@@ -1,14 +1,11 @@
 import os
-from dotenv import load_dotenv
+import streamlit as st
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, HypotheticalDocumentEmbedder, ConversationalRetrievalChain
 from langchain.memory import ConversationBufferWindowMemory
-
-# ✅ Load environment variables
-load_dotenv()
 
 # ✅ Paths
 DB_FAISS_PATH = "vectorstore/db_faiss"
@@ -22,12 +19,13 @@ memory = ConversationBufferWindowMemory(
 )
 
 # ✅ LLM setup (OpenRouter API with Mistral-7B)
+# Use st.secrets to securely load the API key
 llm = ChatOpenAI(
     model="mistralai/mistral-7b-instruct",
     temperature=0.5,
     max_tokens=512,
     openai_api_base="https://openrouter.ai/api/v1",
-    openai_api_key=os.getenv("OPENAI_API_KEY")
+    openai_api_key=st.secrets["openrouter"]["api_key"]  # Access the API key from secrets
 )
 
 # ✅ Prompt template for HyDE
