@@ -1,13 +1,12 @@
-langchain==0.0.166
-langchain-community==0.0.4
-langchain-huggingface==0.1.0
-langchain-openai==0.0.3
-FAISS==1.7.2
-python-dotenv==0.21.0
-streamlit==1.19.0
-gtts==2.2.3
-langdetect==1.0.9
-huggingface-hub==0.14.0
-sentence-transformers==2.2.2
-requests==2.28.1
+langchain
+langchain-community
+langchain-huggingface
+FAISS
+python-dotenv
+streamlit
+gtts
+langdetect
+huggingface-hub
+sentence-transformers
+requests
 
