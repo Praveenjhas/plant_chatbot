@@ -47,7 +47,7 @@ def load_llm_openrouter():
         st.error(f"LLM initialization failed: {str(e)}")
         st.stop()
 
- def detect_language(text):
+def detect_language(text):
     try:
         return detect(text)
     except:
