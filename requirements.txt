@@ -1,18 +1,26 @@
-# Core packages
+# Streamlit and core libraries
 streamlit
+
+# Text to Speech
 gtts
 
-# RAG & LLM stuff
+# LangChain and vectorstore
 langchain
+langchain-community
 faiss-cpu
-openai
-tiktoken
+
+# HuggingFace embeddings
 huggingface_hub
 transformers
+
+# OpenRouter (for the LLM)
+openai
+
+# Langdetect for language detection
+langdetect
+
+# JSON handling
 python-dotenv
 
-# Audio (optional, if you ever want to convert audio formats)
-pydub
-
-# Vector math or additional utilities
+# Utilities
 numpy
