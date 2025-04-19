@@ -9,4 +9,5 @@ langdetect
 huggingface-hub
 sentence-transformers
 requests
+openai
 
