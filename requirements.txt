@@ -1,13 +1,23 @@
+# LangChain ecosystem
 langchain
 langchain-community
+langchain-core
+langchain-openai
 langchain-huggingface
-FAISS
-python-dotenv
-streamlit
-gtts
-langdetect
-huggingface-hub
-sentence-transformers
-requests
-openai
 
+# Embeddings and Vector Stores
+sentence-transformers
+faiss-cpu
+huggingface-hub
+
+# Streamlit & UI
+streamlit
+rich
+
+# Backend Tools
+python-dotenv
+tqdm
+numpy
+
+# Optional - If you're using OpenRouter or similar services
+httpx
