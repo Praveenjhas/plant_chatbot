@@ -1,0 +1,18 @@
+# Core packages
+streamlit
+gtts
+
+# RAG & LLM stuff
+langchain
+faiss-cpu
+openai
+tiktoken
+huggingface_hub
+transformers
+python-dotenv
+
+# Audio (optional, if you ever want to convert audio formats)
+pydub
+
+# Vector math or additional utilities
+numpy
