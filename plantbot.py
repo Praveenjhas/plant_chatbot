@@ -10,9 +10,9 @@ from datetime import datetime
 from langdetect import detect
 from langchain.chains import RetrievalQA
 from langchain_community.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import PromptTemplate
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
