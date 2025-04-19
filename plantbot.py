@@ -47,7 +47,39 @@ def load_llm_openrouter():
         st.error(f"LLM initialization failed: {str(e)}")
         st.stop()
 
-# ... [rest of your utility functions remain the same] ...
+ def detect_language(text):
+    try:
+        return detect(text)
+    except:
+        return "en"
+
+def text_to_speech(text, lang_code):
+    tts = gTTS(text=text, lang=lang_code)
+    audio_fp = io.BytesIO()
+    tts.write_to_fp(audio_fp)
+    audio_fp.seek(0)
+    return audio_fp
+
+def extract_sources(source_documents):
+    sources = set()
+    for doc in source_documents:
+        if 'source' in doc.metadata:
+            sources.add(doc.metadata['source'])
+    return list(sources)
+
+def format_sources(sources):
+    if not sources:
+        return ""
+    lines = ["\n**Sources:**"]
+    for idx, src in enumerate(sources, 1):
+        lines.append(f"{idx}. [{src}]({src})")
+    return "\n".join(lines)
+
+def highlight_keywords(text):
+    keywords = ["strawberry", "disease", "soil", "climate", "water", "fertilizer"]
+    for kw in keywords:
+        text = re.sub(fr"\b({kw})\b", r"**\1**", text, flags=re.IGNORECASE)
+    return text
 
 # ----------------- MAIN APP -----------------
 def main():
